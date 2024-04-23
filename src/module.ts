@@ -10,7 +10,6 @@ import pkg from "../package.json";
 
 process.versions.autosass = pkg.version;
 
-
 export type CompileOptions = Options<"async"> & { release?: DiscordRelease };
 
 export const NATIVE_SECRET_STRING = randomBytes(30).toString("hex");
@@ -27,7 +26,7 @@ const toImporterResult = (contents: string, syntax: Syntax = "scss"): ImporterRe
 
 const importer: Importer<"sync"> = {
   canonicalize(url, context) {    
-    if (url === "autosass" || url === "@__autosass__") return autoSassURL;
+    if (url === "autosass") return autoSassURL;
     if (url === "autosass/util" && context.containingUrl?.href === autoSassURL.href) return autoSassUtilURL;
     
     return null;

@@ -5,6 +5,8 @@
     "name": "DoggyBootsy",
     "url": "https://doggybootsy.github.io/"
   },
+  "license": "MIT",
+  "homepage": "https://github.com/doggybootsy/autosass",
   "module": "src/index.ts",
   "version": "1.0.0",
   "type": "module",
@@ -21,5 +23,20 @@
   "bin": {
     "autosass": "./src/node.js"
   },
-  "exports": "./src/index.ts"
+  "exports": "./src/index.ts",
+  "files": [
+    "./readme.md",
+    "./package.json",
+    "./tsconfig.json",
+    "./src/autosass/index.scss",
+    "./src/autosass/util.scss",
+    "./src/arguments.ts",
+    "./src/cli.ts",
+    "./src/index.d.ts",
+    "./src/index.ts",
+    "./src/module.ts",
+    "./src/request.ts",
+    "./src/util.ts",
+    "./src/node.js"
+  ]
 }
