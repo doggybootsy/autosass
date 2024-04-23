@@ -1,0 +1,78 @@
+$null-selector: ".autosass-null" !default;
+
+@use "autosass/util" as util;
+
+@use "sass:list";
+@use "sass:meta";
+
+@function release() {
+  @return util.call-native("release");
+}
+@function version() {
+  @return util.call-native("version");
+}
+
+@function autosass($args...) {
+  $keywords: meta.keywords($args);
+
+  // Named keys
+  @if map-has-key($map: $keywords, $key: "keys") and map-has-key($map: $keywords, $key: "class") {
+    $keys: map-get($map: $keywords, $key: "keys");
+    $class: map-get($map: $keywords, $key: "class");
+
+    @if type-of($value: $keys) == "string" {
+      @return autosass(list.append((), $keys), $class);
+    }
+    @if type-of($value: $keys) != "list" {
+      @error "type-of $keys must be type list or string";
+    }
+
+    @return autosass($keys, $class);
+  }
+  // If theres only a keys keyword its bad
+  @else if map-has-key($map: $keywords, $key: "keys") {
+    @error "Requires named $class argument";
+  }
+  // Use the original args list if theres only class
+  @else if map-has-key($map: $keywords, $key: "class") {
+    @return autosass(list.join((), $args), map-get($map: $keywords, $key: "class"));
+  }
+
+  $arg1: list.nth($args, 1);
+  $typeOfArg1: type-of($value: $arg1);
+  $arg2: list.nth($args, 2);
+
+  // If the list is null
+  @if $typeOfArg1 == "null" {    
+    @return $null-selector;
+  }
+
+  @if $typeOfArg1 == "map" or $typeOfArg1 == "list" {
+    // If the class is null then error
+    @if type-of($value: $arg2) != "string" {
+      @error "Argument 2 must be type string";
+    }
+    // If arg1 is a map just call map.get
+    @if $typeOfArg1 == "map" {
+      @if map-has-key($map: $arg1, $key: $arg2) {
+        @return map-get($map: $arg1, $key: $arg2);
+      }
+
+      @return $null-selector;
+    }
+
+    $result: util.get-module($arg1...);
+    // If module is null just return null selector
+    @if type-of($value: $result) == "null" {
+      @return $null-selector;
+    }
+
+    @return map-get($map: $result, $key: $arg2);
+  }
+
+  @return util.get-module($args...);
+}
+// Shorthand for 'autosass' but primary usage is for 'autosass.get'
+@function get($args...) {
+  @return autosass($args...);
+}

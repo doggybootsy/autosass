@@ -1,0 +1,25 @@
+{
+  "name": "autosass",
+  "description": "Custom Sass compiler for Discord Themes",
+  "author": {
+    "name": "DoggyBootsy",
+    "url": "https://doggybootsy.github.io/"
+  },
+  "module": "src/index.ts",
+  "version": "1.0.0",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "sass": "^1.75.0"
+  },
+  "bin": {
+    "autosass": "./src/node.js"
+  },
+  "exports": "./src/index.ts"
+}

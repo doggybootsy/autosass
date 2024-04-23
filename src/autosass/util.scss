@@ -1,0 +1,22 @@
+@use "sass:list";
+@use "sass:map";
+
+@function call-native($action, $args...) {
+  @return __autosass_native__($secret, $action, $args...);
+}
+
+@function get-module($keys...) {
+  @each $key in $keys {
+    @if type-of($value: $key) != "string" {
+      @error "Key must be type string";
+    }
+  }
+
+  $result: call-native("get-module", $keys...);
+
+  @if type-of($value: $result) == "null" {
+    @warn "Module search resulted in null";
+  }
+
+  @return $result;
+}
