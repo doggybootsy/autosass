@@ -3,7 +3,7 @@ Autosass is a SASS compiler, thats primarly usage is for Discord Themes. Autosas
 
 To use autosass you need [Bun](https://bun.sh/) installed. It uses the Bun global and HTMLWriter global
 
-autosass is based off of a different project called [autocss](https://github.com/LosersUnited/AutoCSS);
+autosass is based off of a different project called [autocss](https://github.com/LosersUnited/AutoCSS)
 
 # Installing
 Install the autosass module globally `npm install --global autosass` or locally `npm install autosass`

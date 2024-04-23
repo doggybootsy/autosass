@@ -1,7 +1,4 @@
 import { SassMap, sassNull, SassString, sassFalse, sassTrue, SassList, SassNumber, Value } from "sass";
-import { dirname } from "node:path";
-import { writeFile, mkdir, exists } from "node:fs/promises";
-import { pathToFileURL as $pathToFileURL } from "node:url";
 
 export type DiscordRelease = "stable" | "ptb" | "canary";
 

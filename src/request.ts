@@ -1,5 +1,5 @@
 import { join } from "node:path";
-import { exists, rm, readFile, mkdir } from "node:fs/promises";
+import { exists, readFile, mkdir } from "node:fs/promises";
 
 import { getDiscordURL, type DiscordRelease } from "./util";
 

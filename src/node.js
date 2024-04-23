@@ -4,10 +4,7 @@ import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 
 function bun() {
-  return spawn("bun", Array.from(arguments), {
-    env: process.env,
-    cwd: process.cwd()
-  });
+  return spawn("bun", Array.from(arguments), { env: process.env, cwd: process.cwd() });
 }
 
 const child = bun("--revision");

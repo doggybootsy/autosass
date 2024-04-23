@@ -1,6 +1,4 @@
-import { compileAsync, clearCache as $clearCache, type CompileOptions } from "./module";
-
-export { type CompileOptions };
+import { compileAsync, clearCache as $clearCache } from "./module";
 
 export const releases = Object.freeze(<const>[ "stable", "ptb", "canary" ]);
 

@@ -7,8 +7,15 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/doggybootsy/autosass",
+  "keywords": [
+    "discord",
+    "sass",
+    "themes",
+    "discord-themes"
+  ],
   "module": "src/index.ts",
-  "version": "1.0.0",
+  "types": "./src/index.d.ts",
+  "version": "1.0.1",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
