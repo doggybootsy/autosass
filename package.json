@@ -30,7 +30,9 @@
   "bin": {
     "autosass": "./src/node.js"
   },
-  "exports": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "files": [
     "./readme.md",
     "./package.json",
